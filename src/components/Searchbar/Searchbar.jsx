@@ -1,21 +1,32 @@
+import { SaerchInput, SearchBar, SearchButton, SearchButtonLabel, SearchForm } from "./Searchbar.styled";
+import { Formik, Field } from "formik";
 
+export const Searchbar = () => {
+  const handleSubmit = (value, { resetForm }) => {
+    console.log(value);
+    resetForm();
+  };
 
-
-
-
-// eslint-disable-next-line no-lone-blocks
-{/* <header class="searchbar">
-  <form class="form">
-    <button type="submit" class="button">
-      <span class="button-label">Search</span>
-    </button>
-
-    <input
-      class="input"
-      type="text"
-      autocomplete="off"
-      autofocus
-      placeholder="Search images and photos"
-    />
-  </form>
-</header> */}
+  return (
+    <SearchBar>
+      <Formik
+        initialValues={{ value: '' }}
+        onSubmit={handleSubmit}
+      >
+        <SearchForm>
+          <SearchButton type="submit">
+            <SearchButtonLabel>Search</SearchButtonLabel>
+          </SearchButton>
+          <Field
+            as={SaerchInput}
+            name="value"
+            type="text"
+            autoComplete="off"
+            autoFocus
+            placeholder="Search images and photos"
+          />
+        </SearchForm>
+      </Formik>
+    </SearchBar>
+  );
+};
