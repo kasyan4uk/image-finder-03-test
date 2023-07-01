@@ -1,9 +1,11 @@
 import { SaerchInput, SearchBar, SearchButton, SearchButtonLabel, SearchForm } from "./Searchbar.styled";
 import { Formik, Field } from "formik";
+import PropTypes from 'prop-types';
 
-export const Searchbar = () => {
-  const handleSubmit = (value, { resetForm }) => {
-    console.log(value);
+export const Searchbar = ({onFormSubmit }) => {
+  const handleSubmit = (values, { resetForm }) => {
+    onFormSubmit(values.value.trim());
+    console.log(values)
     resetForm();
   };
 
@@ -29,4 +31,8 @@ export const Searchbar = () => {
       </Formik>
     </SearchBar>
   );
+};
+
+Searchbar.propTypes = {
+  onFormSubmit: PropTypes.func.isRequired,
 };
