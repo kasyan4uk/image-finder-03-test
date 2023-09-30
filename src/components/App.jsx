@@ -11,7 +11,7 @@ const App = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(setValue('katya have velyki byryri'));
+    dispatch(setValue('sup'));
     dispatch(getCarsThunk())
   }, [dispatch]);
 
